@@ -18,7 +18,7 @@ const AnimatedBox = ({isTesting}) => {
   });
 
   return (
-    <mesh ref={meshRef} scale={[0.5, 0.5, 0.5]}>
+    <mesh ref={meshRef} scale={[0.5, 0.5, 0.5]} position={[0,1.5,0]}>
       <axesHelper />
 
       <boxGeometry />
