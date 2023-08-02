@@ -56,7 +56,7 @@ const Player = () => {
     }
   }, [forward, backward, left, right, jump, shift])
 
-  return <primitive object={model.scene} />
+  return <primitive castShadow object={model.scene} />
   
 }
 
