@@ -54,7 +54,7 @@ function CameraLogger() {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      console.log(camera.position);
+      // console.log(camera.position);
     }, 1000);
 
     return () => {
