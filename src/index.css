@@ -6,3 +6,10 @@
 body {
   margin: 0;
 }
+
+.helpcontrols {
+  position: fixed;
+  bottom: 0px;
+  opacity: 60%;
+  z-index: auto;
+}
