@@ -19,6 +19,7 @@ const Player = () => {
   console.log(model)
 
   const currentAction = useRef("");
+  const touchStartTime = useRef(0);
 
   useEffect(() => {
     // teste actions
@@ -34,15 +35,17 @@ const Player = () => {
 
     let action = "";
 
-    if(forward || backward || left || right) {
+    if (forward || backward || left || right) {
       action = "walking";
       if(shift) {
         action = "running";
       }
     } else if (jump) {
+      action = "jumping";
     } else {
       action = "idle";
     }
+    // actions?.walking?.play();
 
     if (currentAction.current != action) {
       const nextActionToPlay = actions[action];
@@ -57,4 +60,4 @@ const Player = () => {
   
 }
 
-export default Player
+export default Player;
