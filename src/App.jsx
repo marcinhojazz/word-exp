@@ -1,9 +1,11 @@
 import { Canvas, useThree } from "@react-three/fiber";
-import { useEffect } from "react";
-import { OrbitControls, OrthographicCamera, PerspectiveCamera, Stats } from "@react-three/drei";
+import { Suspense, useEffect } from "react";
+import { Environment, OrbitControls, OrthographicCamera, PerspectiveCamera, Stats } from "@react-three/drei";
 import AnimatedBox from "./components/AnimatedBox";
 import Player from "./components/Player";
 import Ground from "./components/Ground";
+import City from "./components/City";
+import { Physics } from "@react-three/rapier";
 
 function App() {
   const testing = true;
@@ -14,9 +16,15 @@ function App() {
         {testing ? <Stats /> : null}
         {testing ? <gridHelper args={[20, 20]} /> : null}
         {testing ? <axesHelper visible={'testing'} args={[3]}/> : null}
-        <Player />
-        <OrbitControls position={[0,3,5]}/>
-        <ambientLight intensity={0.6} />
+
+        <Suspense>
+          <Physics debug>
+            <Player />
+            <City />
+          </Physics>
+        </Suspense>
+
+        {/* <ambientLight intensity={0.4} />
         <directionalLight 
           color="white" 
           position={[0,2,5]} 
@@ -35,12 +43,13 @@ function App() {
           angle={0.3} 
           intensity={0.5} 
           castShadow
-        />
+        /> */}
         <PerspectiveCamera position={[1.5, 3.2, 3.5]} makeDefault />
-        <Ground />
+        {/* <Ground /> */}
 
         <AnimatedBox isTesting={testing} />
         <CameraLogger />
+        <Environment preset="city" />
       </Canvas>
       <div className="helpcontrols">
         <img width={400} src="/helpcontrol.png" alt="help" />
